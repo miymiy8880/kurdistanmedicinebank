@@ -1,200 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kurdistan Medicine Bank — Health. Dignity. Hope.</title>
-<meta name="description" content="Kurdistan Medicine Bank delivers essential medicines to underserved clinics and families across Kurdistan.">
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurdistan Medicine Bank — Health. Dignity. Hope.</title>
+  <meta name="description" content="Kurdistan Medicine Bank delivers essential medicines to underserved clinics and families across Kurdistan.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- Navigation -->
-<nav class="navbar">
-  <div class="container nav-container">
-    <a href="#" class="logo-brand">
-      <img src="logo.jpg" alt="Kurdistan Medicine Bank" class="nav-logo-img" onerror="this.style.display='none'">
-      <span>Kurdistan Medicine Bank</span>
-    </a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-burger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </label>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#impact">Impact</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#involved">Get Involved</a></li>
-      <li><a href="#contact" class="btn-primary btn-small">Donate</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="logo-brand">
+        <img src="logo.jpg" alt="Kurdistan Medicine Bank Logo" class="nav-logo-img" onerror="this.style.display='none'">
+        <span class="brand-text">Kurdistan Medicine Bank</span>
+      </a>
 
-<main id="main">
+      <!-- Mobile Hamburger Toggle -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
+      <label for="menu-toggle" class="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="kilim-border" aria-hidden="true"></div>
-    <div class="container hero-content">
-      <!-- Top Banner Logo -->
-      <div class="hero-logo-wrapper">
-        <img src="logo.jpg" alt="Kurdistan Medicine Bank Logo" class="hero-main-logo">
-      </div>
-      
-      <p class="eyebrow">Kurdistan Medicine Bank</p>
-      <h1>HEALTH.<br>DIGNITY.<br>HOPE.</h1>
-      <p class="hero-lede">We move essential, life-saving medicine from where it is stockpiled to where it is needed — into the hands of clinics, pharmacists, and families across Kurdistan.</p>
-      <div class="hero-btns">
-        <a href="#involved" class="btn-primary">Request Medicine</a>
-        <a href="#contact" class="btn-secondary">Donate Now</a>
-      </div>
+      <!-- Navigation Links -->
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#impact" class="nav-link">Impact</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#involved" class="nav-link">Get Involved</a>
+        <a href="#contact" class="btn-nav">Donate</a>
+      </nav>
     </div>
-    <div class="kilim-border" aria-hidden="true"></div>
   </header>
 
-  <!-- Impact Ledger -->
-  <section id="impact" class="impact-section">
-    <div class="container">
-      <p class="eyebrow eyebrow-onpine">The manifest</p>
-      <div class="ledger">
-        <div class="ledger-row">
-          <span class="ledger-num">50,000+</span>
-          <span class="ledger-label">Prescriptions filled</span>
+  <main id="main">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-logo-box">
+          <img src="logo.jpg" alt="Kurdistan Medicine Bank Emblem" class="hero-main-logo">
         </div>
-        <div class="ledger-row">
-          <span class="ledger-num">120+</span>
-          <span class="ledger-label">Partner clinics &amp; pharmacies</span>
-        </div>
-        <div class="ledger-row">
-          <span class="ledger-num">3</span>
-          <span class="ledger-label">Governorates served — Erbil, Sulaymaniyah, Duhok</span>
-        </div>
-        <div class="ledger-row">
-          <span class="ledger-num">100%</span>
-          <span class="ledger-label">Of donations go to medicine and delivery, not overhead</span>
+        <span class="eyebrow">Kurdistan Medicine Bank</span>
+        <h1 class="hero-title">HEALTH.<br>DIGNITY.<br>HOPE.</h1>
+        <p class="hero-lede">We move essential, life-saving medicine from where it is stockpiled to where it is needed — into the hands of clinics, pharmacists, and families across Kurdistan.</p>
+        
+        <!-- Working Functional Buttons -->
+        <div class="hero-actions">
+          <a href="#involved" class="btn btn-primary">Request Medicine</a>
+          <a href="#contact" class="btn btn-secondary">Donate Now</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="about-section">
-    <div class="container about-grid">
-      <div class="about-art" aria-hidden="true">
-        <div class="kilim-tile"></div>
+    <!-- Impact Section -->
+    <section id="impact" class="section impact-section">
+      <div class="container">
+        <span class="eyebrow eyebrow-light">The Manifest</span>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <span class="impact-num">50,000+</span>
+            <span class="impact-label">Prescriptions filled</span>
+          </div>
+          <div class="impact-card">
+            <span class="impact-num">120+</span>
+            <span class="impact-label">Partner clinics &amp; pharmacies</span>
+          </div>
+          <div class="impact-card">
+            <span class="impact-num">3</span>
+            <span class="impact-label">Governorates served (Erbil, Sulaymaniyah, Duhok)</span>
+          </div>
+          <div class="impact-card">
+            <span class="impact-num">100%</span>
+            <span class="impact-label">Direct donation allocation to medicine &amp; delivery</span>
+          </div>
+        </div>
       </div>
-      <div class="about-copy">
-        <p class="eyebrow">Who we are</p>
-        <h2>A bridge between full shelves and empty ones.</h2>
-        <p>Kurdistan Medicine Bank exists because the region's shortage of medicine has never really been a shortage — it's a distribution problem. Surplus and donated medicine sits in warehouses abroad while clinics in Kurdistan run short of the basics: insulin, antibiotics, blood pressure medication, asthma inhalers.</p>
-        <p>We built the logistics, customs, and clinic relationships to close that gap — sourcing medicine, verifying it, and getting it into the hands of the pharmacists and doctors who see patients every day.</p>
-        <blockquote class="pull-quote">"We don't run a pharmacy. We keep a hundred and twenty other ones stocked."</blockquote>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services -->
-  <section id="services" class="services-section">
-    <div class="container">
-      <p class="eyebrow">What we do</p>
-      <h2>Four ways we get medicine to the people who need it.</h2>
-      <div class="services-grid">
-        <article class="service-card">
-          <span class="service-mark"><i class="fa-solid fa-prescription-bottle-medical"></i></span>
-          <h3>Prescription access</h3>
-          <p>We supply chronic-care medication — for diabetes, hypertension, and heart disease — to partner pharmacies at no cost to the patient.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-mark"><i class="fa-solid fa-hospital"></i></span>
-          <h3>Clinic partnerships</h3>
-          <p>We stock rural and refugee-camp clinics directly, matching inventory to what each clinic actually treats.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-mark"><i class="fa-solid fa-truck-medical"></i></span>
-          <h3>Emergency relief</h3>
-          <p>When flooding, displacement, or conflict cuts off supply lines, we run rapid shipments of trauma and first-response medicine.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-mark"><i class="fa-solid fa-notes-medical"></i></span>
-          <h3>Chronic disease support</h3>
-          <p>We help patients with long-term conditions stay on treatment, instead of rationing pills between shipments.</p>
-        </article>
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container about-container">
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="section-title">A bridge between full shelves and empty ones.</h2>
+        <div class="about-content">
+          <p>Kurdistan Medicine Bank exists because the region's shortage of medicine has never really been a shortage — it's a distribution problem. Surplus and donated medicine sits in warehouses abroad while clinics in Kurdistan run short of the basics: insulin, antibiotics, blood pressure medication, and asthma inhalers.</p>
+          <p>We built the logistics, customs clearing, and clinic relationships to close that gap — sourcing medicine, verifying quality, and getting it directly into the hands of healthcare providers.</p>
+        </div>
+        <blockquote class="pull-quote">
+          "We don't run a single central pharmacy. We keep a hundred and twenty local ones stocked."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <span class="eyebrow">What We Do</span>
+        <h2 class="section-title">Four ways we deliver medicine to those in need.</h2>
+        
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+            <h3>Prescription Access</h3>
+            <p>We supply chronic-care medication — for diabetes, hypertension, and heart disease — to partner pharmacies at no cost to the patient.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-hospital"></i></div>
+            <h3>Clinic Partnerships</h3>
+            <p>We stock rural and refugee-camp clinics directly, matching inventory to what each clinic actually treats.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-truck-medical"></i></div>
+            <h3>Emergency Relief</h3>
+            <p>When displacement or localized crises cut off supply lines, we run rapid shipments of trauma and first-response medicine.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-notes-medical"></i></div>
+            <h3>Chronic Disease Support</h3>
+            <p>We help patients with long-term conditions stay on regular treatment routines instead of rationing daily dosage.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="involved" class="section involved-section">
+      <div class="container involved-grid">
+        <div class="action-card">
+          <span class="eyebrow">For Clinics &amp; Patients</span>
+          <h3>Request Medicine</h3>
+          <p>If you manage a clinic or pharmacy in Kurdistan, or need urgent assistance getting a prescription filled, submit an application.</p>
+          <a href="#contact" class="btn btn-outline">Start a Request</a>
+        </div>
+
+        <div class="action-card action-card-accent">
+          <span class="eyebrow eyebrow-light">For Donors</span>
+          <h3>Fund a Shipment</h3>
+          <p>Every donation procures certified medicine at wholesale cost and covers local delivery straight into a patient's hands.</p>
+          <a href="#contact" class="btn btn-primary">Donate Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow">Get In Touch</span>
+          <h2 class="section-title">Reach the team.</h2>
+          <p>Send a note and we will route your inquiry to intake, medical distribution, or donor relations.</p>
+          <ul class="contact-details">
+            <li><i class="fa-solid fa-envelope"></i> info@kurdistanmedicinebank.org</li>
+            <li><i class="fa-solid fa-location-dot"></i> Erbil, Kurdistan Region of Iraq</li>
+          </ul>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/xbjnqkyw" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="4" placeholder="Type your inquiry or request here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <img src="logo.jpg" alt="Logo" class="footer-logo" onerror="this.style.display='none'">
+        <span>Kurdistan Medicine Bank</span>
+      </div>
+      <ul class="footer-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#involved">Get Involved</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
       </div>
     </div>
-  </section>
-
-  <!-- Get Involved -->
-  <section id="involved" class="involved-section">
-    <div class="container involved-grid">
-      <div class="involved-card">
-        <p class="eyebrow">For clinics &amp; patients</p>
-        <h3>Request medicine</h3>
-        <p>If you run a clinic or pharmacy in Kurdistan, or need help getting a prescription filled, tell us what you need.</p>
-        <a href="#contact" class="btn-outline">Start a request</a>
-      </div>
-      <div class="involved-card involved-card-accent">
-        <p class="eyebrow eyebrow-onrust">For donors</p>
-        <h3>Fund a shipment</h3>
-        <p>Every donation buys medicine at cost and covers the customs and delivery to get it into a patient's hands.</p>
-        <a href="#contact" class="btn-primary">Donate now</a>
-      </div>
+    <div class="container copyright-box">
+      <p>&copy; 2026 Kurdistan Medicine Bank. All rights reserved.</p>
     </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-grid">
-      <div>
-        <p class="eyebrow">Get in touch</p>
-        <h2>Reach the team.</h2>
-        <p>Send a note and we'll route it to the right person — intake, partnerships, or donations.</p>
-        <ul class="contact-list">
-          <li><i class="fa-solid fa-envelope"></i> info@kurdistanmedicinebank.org</li>
-          <li><i class="fa-solid fa-location-dot"></i> Erbil, Kurdistan Region of Iraq</li>
-        </ul>
-      </div>
-      <form class="contact-form" onsubmit="return false;">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required>
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
-        <label for="message">How can we help?</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        <button type="submit" class="btn-primary">Send message</button>
-      </form>
-    </div>
-  </section>
-
-</main>
-
-<!-- Footer -->
-<footer>
-  <div class="kilim-border kilim-border-footer" aria-hidden="true"></div>
-  <div class="container footer-content">
-    <div class="footer-brand">
-      <img src="logo.jpg" alt="" class="footer-logo-img" onerror="this.style.display='none'">
-      <span>Kurdistan Medicine Bank</span>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#involved">Get Involved</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="footer-social">
-      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-    </div>
-  </div>
-  <p class="footer-copy">&copy; 2026 Kurdistan Medicine Bank. All rights reserved.</p>
-</footer>
+  </footer>
 
 </body>
 </html>
