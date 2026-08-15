@@ -23,7 +23,7 @@ body {
   padding: 0 20px;
 }
 
-/* Navbar */
+/* Navbar Logo Styling */
 .navbar {
   background: #ffffff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -36,14 +36,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 80px;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.nav-logo-img {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-links {
