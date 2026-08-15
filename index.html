@@ -10,6 +10,64 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-card {
+      background: #ffffff;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #64748b;
+    }
+    .payment-option-box {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      background: #f8fafc;
+    }
+    .payment-option-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: #1c4b8b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .payment-detail {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      color: #334155;
+      word-break: break-all;
+    }
+  </style>
 </head>
 <body>
 
@@ -23,7 +81,6 @@
         <span class="brand-text">Kurdistan Medicine Bank</span>
       </a>
 
-      <!-- Mobile Hamburger Toggle -->
       <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu">
       <label for="menu-toggle" class="hamburger-btn">
         <span></span>
@@ -31,16 +88,14 @@
         <span></span>
       </label>
 
-      <!-- Navigation Links -->
       <nav class="nav-menu">
         <a href="#about" class="nav-link">About</a>
         <a href="#impact" class="nav-link">Impact</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#involved" class="nav-link">Get Involved</a>
-        <!-- Nav Donation Button -->
-        <a href="https://donate.stripe.com/YOUR_LIVE_PAYMENT_LINK" class="btn-nav" target="_blank" rel="noopener noreferrer">
-          <i class="fa-regular fa-credit-card"></i> Donate
-        </a>
+        <button onclick="openDonateModal()" class="btn-nav" style="border:none; cursor:pointer;">
+          <i class="fa-solid fa-hand-holding-heart"></i> Donate
+        </button>
       </nav>
     </div>
   </header>
@@ -57,12 +112,11 @@
         <h1 class="hero-title">HEALTH.<br>DIGNITY.<br>HOPE.</h1>
         <p class="hero-lede">We move essential, life-saving medicine from where it is stockpiled to where it is needed — into the hands of clinics, pharmacists, and families across Kurdistan.</p>
         
-        <!-- Hero Action Buttons -->
         <div class="hero-actions">
           <a href="#involved" class="btn btn-primary">Request Medicine</a>
-          <a href="https://donate.stripe.com/YOUR_LIVE_PAYMENT_LINK" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-            <i class="fa-solid fa-credit-card"></i> Donate via Card
-          </a>
+          <button onclick="openDonateModal()" class="btn btn-secondary" style="cursor:pointer;">
+            <i class="fa-solid fa-credit-card"></i> Donate (FIB / Card)
+          </button>
         </div>
       </div>
     </section>
@@ -155,10 +209,9 @@
           <span class="eyebrow eyebrow-light">For Donors</span>
           <h3>Fund a Shipment</h3>
           <p>Every donation procures certified medicine at wholesale cost and covers local delivery straight into a patient's hands.</p>
-          <!-- Card Donation Action Button -->
-          <a href="https://donate.stripe.com/YOUR_LIVE_PAYMENT_LINK" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            <i class="fa-solid fa-lock"></i> Donate via Credit Card
-          </a>
+          <button onclick="openDonateModal()" class="btn btn-primary" style="cursor:pointer;">
+            <i class="fa-solid fa-wallet"></i> Donate via FIB or Card
+          </button>
         </div>
       </div>
     </section>
@@ -196,6 +249,44 @@
 
   </main>
 
+  <!-- Donation Modal Pop-up -->
+  <div id="donateModal" class="modal-overlay" onclick="closeModalOnBg(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeDonateModal()">&times;</button>
+      <h3 style="font-family: var(--font-heading); color: var(--primary-blue); margin-bottom: 0.5rem;">Donate to Kurdistan Medicine Bank</h3>
+      <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Select your preferred payment method below to transfer support directly.</p>
+
+      <!-- First Iraqi Bank (FIB) Option -->
+      <div class="payment-option-box">
+        <div class="payment-option-title">
+          <i class="fa-solid fa-building-columns"></i> First Iraqi Bank (FIB)
+        </div>
+        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Transfer directly via the FIB App using our IBAN or Account Number:</p>
+        <div class="payment-detail">
+          <strong>IBAN:</strong> IQ00FIB000000000000000000<br>
+          <strong>Account Name:</strong> Kurdistan Medicine Bank
+        </div>
+      </div>
+
+      <!-- Visa & Mastercard Direct Card Option -->
+      <div class="payment-option-box">
+        <div class="payment-option-title">
+          <i class="fa-regular fa-credit-card"></i> Visa / Mastercard (Direct Transfer)
+        </div>
+        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">For international or local card transfers to our bank account:</p>
+        <div class="payment-detail">
+          <strong>Bank Name:</strong> First Iraqi Bank (FIB)<br>
+          <strong>SWIFT / BIC:</strong> FIQBIQBAXXX<br>
+          <strong>Card Account Number:</strong> 0000-0000-0000-0000
+        </div>
+      </div>
+
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 1rem; text-align: center;">
+        Need a formal donation receipt? Contact us at <strong>info@kurdistanmedicinebank.org</strong> after your transfer.
+      </p>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-container">
@@ -219,6 +310,20 @@
       <p>&copy; 2026 Kurdistan Medicine Bank. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    function openDonateModal() {
+      document.getElementById('donateModal').style.display = 'flex';
+    }
+    function closeDonateModal() {
+      document.getElementById('donateModal').style.display = 'none';
+    }
+    function closeModalOnBg(event) {
+      if (event.target === document.getElementById('donateModal')) {
+        closeDonateModal();
+      }
+    }
+  </script>
 
 </body>
 </html>
