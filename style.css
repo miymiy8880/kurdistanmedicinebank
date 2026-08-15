@@ -4,22 +4,21 @@
    Type: Inter throughout
    =========================================================== */
 
-/* /* ==========================================================================
+/* ==========================================================================
    1. RESET & VARIABLE DECLARATIONS
    ========================================================================== */
 :root {
   --primary-blue: #1c4b8b;
   --accent-blue: #2b70c9;
-  --dark-pine: #1b382b;
-  --bg-light: #f8fafc;
+  --bg-main: #FDFDFD;
   --text-dark: #0f172a;
   --text-body: #334155;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
   --white: #ffffff;
 
-  /* Matches the background color of logo.jpg for smooth blending */
-  --logo-bg: #ffffff;
+  /* Matches logo and site background for smooth blending */
+  --logo-bg: #FDFDFD;
 
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Source Serif 4', Georgia, serif;
@@ -43,7 +42,7 @@ body {
   overflow-x: hidden;
   font-family: var(--font-body);
   color: var(--text-body);
-  background-color: var(--white);
+  background-color: var(--bg-main);
   line-height: 1.6;
 }
 
@@ -53,7 +52,7 @@ img {
   display: block;
 }
 
-/* Automatic logo blending for light/white backgrounds */
+/* Automatic logo blending */
 .hero-main-logo,
 .nav-logo-img,
 .footer-logo {
@@ -183,7 +182,7 @@ h1, h2, h3 {
   top: 70px;
   left: 0;
   width: 100%;
-  background: var(--white);
+  background: var(--bg-main);
   padding: 1.5rem;
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -343,7 +342,7 @@ h1, h2, h3 {
    6. IMPACT SECTION (MANIFEST)
    ========================================================================== */
 .impact-section {
-  background: var(--dark-pine);
+  background: var(--primary-blue);
   color: var(--white);
 }
 
@@ -383,6 +382,10 @@ h1, h2, h3 {
 /* ==========================================================================
    7. ABOUT & SERVICES SECTIONS
    ========================================================================== */
+.about-section {
+  background-color: var(--bg-main);
+}
+
 .about-content p {
   margin-bottom: 1rem;
   font-size: 1.05rem;
@@ -398,7 +401,7 @@ h1, h2, h3 {
 }
 
 .services-section {
-  background: var(--bg-light);
+  background: var(--bg-main);
 }
 
 .services-grid {
@@ -434,6 +437,10 @@ h1, h2, h3 {
 /* ==========================================================================
    8. GET INVOLVED & CONTACT FORM
    ========================================================================== */
+.involved-section {
+  background-color: var(--bg-main);
+}
+
 .involved-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -450,7 +457,7 @@ h1, h2, h3 {
   padding: 2rem;
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  background: var(--bg-light);
+  background: var(--white);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -462,13 +469,17 @@ h1, h2, h3 {
 }
 
 .action-card-accent {
-  background: var(--dark-pine);
+  background: var(--primary-blue);
   color: var(--white);
   border: none;
 }
 
 .action-card-accent h3 {
   color: var(--white);
+}
+
+.contact-section {
+  background-color: var(--bg-main);
 }
 
 .contact-grid {
