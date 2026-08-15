@@ -490,3 +490,22 @@ footer {
   font-size: 0.8rem;
   color: #64748b;
 }
+
+/* Hero Top Logo Styling */
+.hero-logo-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.hero-main-logo {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .hero-main-logo {
+    max-width: 130px;
+  }
+}
+
