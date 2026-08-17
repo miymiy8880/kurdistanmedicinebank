@@ -229,8 +229,11 @@
           </ul>
         </div>
 
-        <!-- Update the action URL below with your active Formspree Form ID -->
-        <form class="contact-form" action="https://formspree.io/f/YOUR_ACTUAL_FORM_ID" method="POST">
+        <!-- Web3Forms Contact Form Endpoint -->
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="C5305b88-e895-4792-a416-8c58018a30d6">
+          <input type="hidden" name="subject" value="New Inquiry - Kurdistan Medicine Bank">
+
           <div class="form-group">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Your full name" required>
