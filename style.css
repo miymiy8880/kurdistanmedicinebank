@@ -1,131 +1,633 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+/* ===========================================================
+   Kurdistan Medicine Bank — clean clinical NGO style
+   Palette: white, navy ink, trust blue, light blue tints
+   Type: Inter throughout
+   =========================================================== */
+
+/* ==========================================================================
+   1. RESET & VARIABLE DECLARATIONS
+   ========================================================================== */
+:root {
+  --primary-blue: #1c4b8b;
+  --accent-blue: #2b70c9;
+  --bg-main: #FDFDFD;
+  --text-dark: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --white: #ffffff;
+
+  /* Kilim tile motif color fallbacks */
+  --pine: #24392f;
+  --rust: #b23a2a;
+  --gold: #c99a3e;
+  --shadow: 0 10px 30px rgba(27, 36, 32, 0.10);
+
+  /* Matches logo and site background for smooth blending */
+  --logo-bg: #FDFDFD;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
-:root {
-  --primary-color: #2b70c9;
-  --dark-blue: #1c4b8b;
-  --light-bg: #f8fafc;
-  --text-color: #334155;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
 }
 
 body {
-  color: var(--text-color);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  color: var(--text-body);
+  background-color: var(--bg-main);
   line-height: 1.6;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Navbar */
-.navbar {
-  background: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+/* Automatic logo blending */
+.hero-main-logo,
+.nav-logo-img,
+.footer-logo {
+  mix-blend-mode: multiply;
+}
+
+/* ==========================================================================
+   2. REUSABLE CONTAINER & TYPOGRAPHY
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section {
+  padding: 3.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 5rem 0;
+  }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--primary-blue);
+  line-height: 1.2;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-blue);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.eyebrow-light {
+  color: var(--white);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--primary-blue);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  z-index: 10000;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ==========================================================================
+   3. NAVIGATION BAR & MOBILE DRAWER
+   ========================================================================== */
+.site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  background-color: var(--logo-bg);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
 }
 
 .nav-container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  height: 70px;
+  min-height: 70px;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-.nav-links {
+.logo-brand {
   display: flex;
-  list-style: none;
-  gap: 20px;
   align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--primary-blue);
+  font-size: 1rem;
 }
 
-.nav-links a {
+.nav-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-blue);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: var(--bg-main);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  gap: 1.25rem;
+}
+
+.nav-link {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.btn-nav {
+  display: inline-block;
+  text-align: center;
+  background: var(--accent-blue);
+  color: var(--white);
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: var(--font-heading);
   font-weight: 600;
 }
 
-/* Buttons */
-.btn-primary {
-  background: var(--primary-color);
-  color: #fff !important;
-  padding: 10px 20px;
-  border-radius: 5px;
+/* Mobile Toggle Behavior */
+.menu-toggle:checked ~ .nav-menu {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .hamburger-btn {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    width: auto;
+    border: none;
+    box-shadow: none;
+    gap: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   4. BUTTONS & ACTIONS
+   ========================================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
   text-decoration: none;
-  transition: 0.3s;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: var(--white) !important;
 }
 
 .btn-primary:hover {
-  background: var(--dark-blue);
+  background: var(--primary-blue);
 }
 
 .btn-secondary {
-  border: 2px solid #fff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
+  background: transparent;
+  color: var(--primary-blue) !important;
+  border-color: var(--primary-blue);
 }
 
-/* Hero Section */
-.hero {
-  background: linear-gradient(rgba(43, 112, 201, 0.85), rgba(28, 75, 139, 0.85)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 100px 0;
-  text-align: center;
+.btn-secondary:hover {
+  background: var(--primary-blue);
+  color: var(--white) !important;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+.btn-outline {
+  background: transparent;
+  color: var(--text-dark);
+  border-color: var(--border-color);
 }
 
-.hero-btns {
-  margin-top: 30px;
+.btn-outline:hover {
+  background: var(--border-color);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ==========================================================================
+   5. HERO SECTION
+   ========================================================================== */
+.hero-section {
+  background-color: var(--logo-bg);
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-container {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Impact */
+.hero-logo-box {
+  margin-bottom: 1.25rem;
+}
+
+.hero-main-logo {
+  max-width: 130px;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.hero-lede {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  max-width: 750px;
+  margin-bottom: 1.75rem;
+  color: var(--text-body);
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.85rem;
+}
+
+@media (min-width: 500px) {
+  .hero-main-logo {
+    max-width: 160px;
+  }
+  .hero-actions {
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+/* ==========================================================================
+   6. IMPACT SECTION (MANIFEST) & KILIM PATTERN DECORATIONS
+   ========================================================================== */
+.kilim-tile {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  background-color: var(--pine);
+  background-image:
+    linear-gradient(45deg, var(--rust) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--rust) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--gold) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--gold) 75%);
+  background-size: 48px 48px;
+  background-position: 0 0, 0 24px, 24px -24px, -24px 0px;
+  box-shadow: var(--shadow);
+}
+
 .impact-section {
-  background: var(--light-bg);
-  padding: 50px 0;
+  background: var(--primary-blue);
+  color: var(--white);
 }
 
 .impact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  text-align: center;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-top: 1rem;
 }
 
-.impact-card h2 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
+@media (min-width: 600px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Footer */
-footer {
+@media (min-width: 992px) {
+  .impact-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.impact-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.impact-label {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   7. ABOUT & SERVICES SECTIONS
+   ========================================================================== */
+.about-section {
+  background-color: var(--bg-main);
+}
+
+.about-content p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.pull-quote {
+  border-left: 4px solid var(--accent-blue);
+  padding-left: 1.25rem;
+  margin-top: 1.5rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.services-section {
+  background: var(--bg-main);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.service-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.service-icon {
+  font-size: 1.75rem;
+  color: var(--accent-blue);
+  margin-bottom: 0.75rem;
+}
+
+.service-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   8. GET INVOLVED & CONTACT FORM
+   ========================================================================== */
+.involved-section {
+  background-color: var(--bg-main);
+}
+
+.involved-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .involved-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.action-card {
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.action-card p {
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.action-card-accent {
+  background: var(--primary-blue);
+  color: var(--white);
+  border: none;
+}
+
+.action-card-accent h3 {
+  color: var(--white);
+}
+
+.contact-section {
+  background-color: var(--bg-main);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-details {
+  list-style: none;
+  margin-top: 1.25rem;
+}
+
+.contact-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: 2px solid var(--accent-blue);
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+.site-footer {
   background: #0f172a;
-  color: white;
+  color: var(--white);
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
   text-align: center;
-  padding: 20px 0;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.footer-logo {
+  height: 32px;
+  width: auto;
+}
+
+.footer-nav {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-socials a {
+  color: var(--white);
+  font-size: 1.25rem;
+}
+
+.copyright-box {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #1e293b;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #64748b;
 }
