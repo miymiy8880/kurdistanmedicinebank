@@ -17,12 +17,6 @@
   --border-color: #e2e8f0;
   --white: #ffffff;
 
-  /* Kilim tile motif color fallbacks */
-  --pine: #24392f;
-  --rust: #b23a2a;
-  --gold: #c99a3e;
-  --shadow: 0 10px 30px rgba(27, 36, 32, 0.10);
-
   /* Matches logo and site background for smooth blending */
   --logo-bg: #FDFDFD;
 
@@ -285,6 +279,18 @@ h1, h2, h3 {
   background: var(--border-color);
 }
 
+/* For buttons that sit on the hero photo or the blue accent card,
+   where btn-secondary / btn-outline wouldn't have enough contrast */
+.btn-white-outline {
+  background: transparent;
+  color: var(--white) !important;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-white-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .btn-full {
   width: 100%;
 }
@@ -293,7 +299,16 @@ h1, h2, h3 {
    5. HERO SECTION
    ========================================================================== */
 .hero-section {
-  background-color: var(--logo-bg);
+  position: relative;
+  background-color: var(--primary-blue);
+  /* Blue-tint gradient over your photo so the white text stays readable.
+     Swap hero-bg.jpg for your own image — same folder as index.html.
+     Until that file exists, this just shows as a plain blue hero. */
+  background-image:
+    linear-gradient(180deg, rgba(28, 75, 139, 0.80), rgba(13, 32, 61, 0.90)),
+    url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
   padding: 3rem 0;
   border-bottom: 1px solid var(--border-color);
 }
@@ -317,6 +332,7 @@ h1, h2, h3 {
 .hero-title {
   font-size: clamp(2.2rem, 7vw, 4rem);
   font-weight: 700;
+  color: var(--white);
   margin-bottom: 1.25rem;
 }
 
@@ -324,7 +340,7 @@ h1, h2, h3 {
   font-size: clamp(1.05rem, 2.5vw, 1.25rem);
   max-width: 750px;
   margin-bottom: 1.75rem;
-  color: var(--text-body);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .hero-actions {
@@ -345,23 +361,8 @@ h1, h2, h3 {
 }
 
 /* ==========================================================================
-   6. IMPACT SECTION (MANIFEST) & KILIM PATTERN DECORATIONS
+   6. IMPACT SECTION (MANIFEST)
    ========================================================================== */
-.kilim-tile {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 4px;
-  background-color: var(--pine);
-  background-image:
-    linear-gradient(45deg, var(--rust) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--rust) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--gold) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--gold) 75%);
-  background-size: 48px 48px;
-  background-position: 0 0, 0 24px, 24px -24px, -24px 0px;
-  box-shadow: var(--shadow);
-}
-
 .impact-section {
   background: var(--primary-blue);
   color: var(--white);
@@ -449,6 +450,7 @@ h1, h2, h3 {
   font-size: 1.75rem;
   color: var(--accent-blue);
   margin-bottom: 0.75rem;
+  display: block;
 }
 
 .service-card h3 {
