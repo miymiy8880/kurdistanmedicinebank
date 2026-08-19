@@ -127,19 +127,19 @@
         <span class="eyebrow eyebrow-light">The Manifest</span>
         <div class="impact-grid">
           <div class="impact-card">
-            <span class="impact-num">50,000+</span>
+            <span class="impact-num" data-target="50000" data-suffix="+">0</span>
             <span class="impact-label">Prescriptions filled</span>
           </div>
           <div class="impact-card">
-            <span class="impact-num">120+</span>
+            <span class="impact-num" data-target="120" data-suffix="+">0</span>
             <span class="impact-label">Partner clinics &amp; pharmacies</span>
           </div>
           <div class="impact-card">
-            <span class="impact-num">5</span>
+            <span class="impact-num" data-target="5" data-suffix="">0</span>
             <span class="impact-label">Communities served (Halabja, Erbil, Duhok, Sulaymaniyah, Bakhdida)</span>
           </div>
           <div class="impact-card">
-            <span class="impact-num">100%</span>
+            <span class="impact-num" data-target="100" data-suffix="%">0</span>
             <span class="impact-label">Direct donation allocation to medicine &amp; delivery</span>
           </div>
         </div>
@@ -329,6 +329,45 @@
         closeDonateModal();
       }
     }
+
+    // Count-up animation for impact numbers
+    function formatNumber(num) {
+      return num.toLocaleString('en-US');
+    }
+
+    function animateCount(el) {
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1200; // ms — fast count
+      const startTime = performance.now();
+
+      function step(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        // ease-out for a quick-start, smooth-finish feel
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = formatNumber(current) + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = formatNumber(target) + suffix;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    const impactNums = document.querySelectorAll('.impact-num');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    impactNums.forEach(num => observer.observe(num));
   </script>
 
 </body>
