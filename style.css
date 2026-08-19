@@ -52,8 +52,7 @@ img {
   display: block;
 }
 
-/* Automatic logo blending */
-.hero-main-logo,
+/* Automatic logo blending (nav + footer only — hero logo overridden below) */
 .nav-logo-img,
 .footer-logo {
   mix-blend-mode: multiply;
@@ -279,8 +278,6 @@ h1, h2, h3 {
   background: var(--border-color);
 }
 
-/* For buttons that sit on the hero photo or the blue accent card,
-   where btn-secondary / btn-outline wouldn't have enough contrast */
 .btn-white-outline {
   background: transparent;
   color: var(--white) !important;
@@ -301,9 +298,6 @@ h1, h2, h3 {
 .hero-section {
   position: relative;
   background-color: var(--primary-blue);
-  /* Blue-tint gradient over your photo so the white text stays readable.
-     Swap hero-bg.jpg for your own image — same folder as index.html.
-     Until that file exists, this just shows as a plain blue hero. */
   background-image:
     linear-gradient(180deg, rgba(28, 75, 139, 0.80), rgba(13, 32, 61, 0.90)),
     url('hero-bg.jpg');
@@ -327,6 +321,8 @@ h1, h2, h3 {
   max-width: 130px;
   height: auto;
   object-fit: contain;
+  mix-blend-mode: normal;
+  filter: brightness(1.4) saturate(1.3);
 }
 
 .hero-title {
@@ -358,6 +354,10 @@ h1, h2, h3 {
     flex-direction: row;
     width: auto;
   }
+}
+
+.hero-section .eyebrow {
+  color: var(--white);
 }
 
 /* ==========================================================================
