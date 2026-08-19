@@ -52,10 +52,11 @@ img {
   display: block;
 }
 
-/* Automatic logo blending (nav + footer only — hero logo overridden below) */
+/* Logo is now a real transparent PNG (logo.png) — no blend-mode trick needed */
 .nav-logo-img,
-.footer-logo {
-  mix-blend-mode: multiply;
+.footer-logo,
+.hero-main-logo {
+  object-fit: contain;
 }
 
 /* ==========================================================================
@@ -149,7 +150,6 @@ h1, h2, h3 {
 .nav-logo-img {
   height: 38px;
   width: auto;
-  object-fit: contain;
 }
 
 .menu-toggle {
@@ -320,9 +320,6 @@ h1, h2, h3 {
 .hero-main-logo {
   max-width: 130px;
   height: auto;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: brightness(1.3) saturate(1.2);
 }
 
 .hero-title {
